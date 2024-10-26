@@ -1,0 +1,66 @@
+// Shape class
+abstract class Shape {
+    public abstract double calculateArea();
+}
+
+// Circle class inheriting from Shape
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Rectangle class inheriting from Shape
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+// Triangle class inheriting from Shape
+class Triangle extends Shape {
+    private double base;
+    private double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 0.5 * base * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape[] shapes = new Shape[3];
+        shapes[0] = new Circle(3.0);
+        shapes[1] = new Rectangle(4.0, 5.0);
+        shapes[2] = new Triangle(2.0, 3.0);
+
+        double totalArea = 0.0;
+        for (Shape shape : shapes) {
+            totalArea += shape.calculateArea();
+        }
+
+        System.out.println("Total area of all shapes: " + totalArea);
+    }
+}
